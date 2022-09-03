@@ -11,7 +11,7 @@ const ExtractJWT = require('passport-jwt').ExtractJwt;
         },
     async (email,password,done) => {
         try {
-                const user =await user.create({email,password});
+                const user =await User.create({email,password});
                 return done(null, user)
         } catch(err){
             console.log(err);
@@ -25,13 +25,13 @@ const ExtractJWT = require('passport-jwt').ExtractJwt;
         usernameField:'email',
         passwordField:'password'
     },
-    async (email,passport,done) => {
+    async (email,password,done) => {
         try{
             const user = await User.findOne({email});
             if(!user){
                 return done(null,false,{message:"User not found"});
             }
-            const validate = await user.isValidatePassword(password);
+            const validate = await user.isValidPassword(password);
             if(!validate){
                 return done(null,false, {message:'Wrong password'})
             }
@@ -58,4 +58,4 @@ const ExtractJWT = require('passport-jwt').ExtractJwt;
             }
         }
 
-    }))
+    ));

@@ -9,13 +9,8 @@ const userSchema = mongoose.Schema({
     password : {
         type:String,
         required: true
-    },
-    username : {
-        type:String,
-        required: true
-
-    }},
-    {timestamps: true});
+    }
+   }, {timestamps: true});
 
 
     //pre save is a trigger that gets a function and executes it before the user object is here
@@ -28,7 +23,7 @@ const userSchema = mongoose.Schema({
 
     userSchema.methods.isValidPassword = async function checkValidity(password) {
         const  user = this;
-        const compare = await bcrypt.compare(password, user.pasasword);
+        const compare = await bcrypt.compare(password, user.password);
         return compare;
     }
 
