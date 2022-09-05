@@ -33,7 +33,7 @@ const ExtractJWT = require('passport-jwt').ExtractJwt;
             }
             const validate = await user.isValidPassword(password);
             if(!validate){
-                return done(null,false, {message:'Wrong password'})
+                return done(null,false, {message:'Wrong  password'})
             }
             return done(null, user, {message:'Logged in Successfully'});
         } catch(err){
