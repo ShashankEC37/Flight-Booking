@@ -1,13 +1,13 @@
+const Review = require('../models/review');
+const ReviewService = require('../service/reviewService');
 
-const FlightService = require('../service/flightService');
-
-const createFlight = async (req,res) => {
+const createReview = async (req,res) => {
     try{
-        const flight = await FlightService.createFlight(req.body);
+        const review = await ReviewService.createReview(req.body);
         res.status(200).json({
             success: true,
-            message:"Successfully created Flight",
-            data: flight
+            message:"Successfully created Review",
+            data: review
             
         }) 
 
@@ -18,32 +18,14 @@ const createFlight = async (req,res) => {
             message:"Something went wrong",
         });
     }}
-
-    const getAllFlights = async (req,res) =>{
-        try{
-            const flights = await FlightService.getAllFlights(req.query);
-            res.status(200).json({
-                success: true,
-                message:"Successfully fetched all Flights",
-                data: flights
-                
-            }) ;
-    } catch (err) {
-        console.log(err);
-        res.status(500).json({
-            success: false,
-            message:"Something went wrong",
-        });
-    }}
-
     
-    const getFlight = async (req,res) =>{
+    const getReview = async (req,res) =>{
         try{
-            const flight = await FlightService.getFlight(req.params.flightNumber);
+            const airline = await ReviewService.getReview(req.params.userId,req.params.flightId);
             res.status(200).json({
                 success: true,
-                message:"Successfully fetched Flight",
-                data: flight
+                message:"Successfully fetched Review",
+                data: airline
                 
             }) 
     } catch (err) {
@@ -54,15 +36,31 @@ const createFlight = async (req,res) => {
         });
     }}
 
-    
-
-    const destroyFlight = async (req,res) =>{
+    const getAllReviews = async (req,res) =>{
         try{
-            const flight = await FlightService.destroyFlight(req.query.flightNumber);
+            const airlines = await ReviewService.getAllReviews();
             res.status(200).json({
                 success: true,
-                message:"Successfully deleted Flight",
-                data: flight
+                message:"Successfully fetched all Airline",
+                data: airlines
+                
+            }) 
+    } catch (err) {
+        console.log(err);
+        res.status(500).json({
+            success: false,
+            message:"Something went wrong",
+        });
+    }}
+
+
+    const destroyReview = async (req,res) =>{
+        try{
+            const review = await ReviewService.destroyReview(req.query.name);
+            res.status(200).json({
+                success: true,
+                message:"Successfully deleted Airline",
+                data: review
                 
             }) 
     } catch (err) {
@@ -77,8 +75,8 @@ const createFlight = async (req,res) => {
 
 module.exports = {
 
-    createFlight,
-    getFlight,
-    getAllFlights,
-    destroyFlight
+    createReview,
+    getReview,
+    getAllReviews,
+    destroyReview
 }
