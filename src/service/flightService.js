@@ -1,19 +1,12 @@
 
-const Flight = require("../models/flight");
+const FlightModule = require("../models/flight");
 const createFlight = async (data) =>{ 
     try {
         const newFlight = {
-            departureAirport: data.departureAirport,
-            arrivalAirport: data.arrivalAirport,
-            duration: data.duration,    
-            flightDate: data.flightDate,
-            departureTme: data.arrivalTime,
-            flightNumber: data.flightNumber,
-            price: data.price,
-            airline: data.airlineId
+          name: data.name
 
         }
-        const response = await new Flight(newFlight).save();
+        const response = await new FlightModule(newFlight).save();
         return response;
 
     }   catch (err) {
@@ -22,26 +15,12 @@ const createFlight = async (data) =>{
 
 }
 
-const updateFlight = async (data) =>{
-    try{
-        const response = await Flight.updateOne({flightNumber: data.flightNumber}, data);
-        } catch(err){
-            console.log(err)
-        }
-}
 
-const destroyFlight = async (flightNumber) =>{
-    try{
-const response = await Flight.findOneAndDelete({flightNumber: flightNumber});
-} catch(err){
-    console.log(err)
-}
-}
 
 const getFlight = async (flightNumber) =>{
     try{
-        const response = await Flight.findOne({flightNumber: flightNumber});
-        return response;
+        const response = await FlightModule.findOne({flightNumber: flightNumber});
+        return response
         } catch(err){
             console.log(err)
         }
@@ -49,17 +28,25 @@ const getFlight = async (flightNumber) =>{
 
 const getAllFlights = async () =>{
     try{
-        const response = await Flight.find({flightNumber: flightNumber});
-        return response    
-    } catch(err){
+        const response = await FlightModule.find();
+        return response;
+        } catch(err){
+            console.log(err)
+        }
+}
+
+const destroyFlight = async (flightNumber) =>{
+    try{
+        const response = await FlightModule.findOneAndDelete({flightNumber: flightNumber});
+        return response
+        } catch(err){
             console.log(err)
         }
 }
 
 module.exports = {
     createFlight,
-    updateFlight,
-    destroyFlight,
     getAllFlights,
-    getFlight
+    getFlight,
+    destroyFlight
 }
