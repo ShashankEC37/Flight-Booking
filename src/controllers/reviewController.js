@@ -38,7 +38,7 @@ const createReview = async (req,res) => {
 
     const getAllReviews = async (req,res) =>{
         try{
-            const airlines = await ReviewService.getAllReviews();
+            const airlines = await ReviewService.getAllReviews(req.params.flightId);
             res.status(200).json({
                 success: true,
                 message:"Successfully fetched all Airline",
