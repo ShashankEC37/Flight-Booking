@@ -5,12 +5,12 @@ const bookingSchema = new mongoose.Schema({
         type: Number
     },
     flight:{
-        type: mongoose.Schema.Type.ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
         required: true,
         ref:'Flight'
     },
     user:{
-        type: mongoose.Schema.Type.ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
         required: true,
         ref:'User'
     },
@@ -22,6 +22,6 @@ const bookingSchema = new mongoose.Schema({
     }
 },{timestamps: true});
 
-const bookingModel = new mongoose.model('Booking', bookingSchema );
+const Booking = new mongoose.model('Booking', bookingSchema );
 
-module.exports = bookingModel;
+module.exports = Booking;
