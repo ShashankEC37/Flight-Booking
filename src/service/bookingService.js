@@ -36,7 +36,7 @@ const boardingPass = async (id) =>{
 
 const cancleBooking = async (id) =>{
     try{
-        const response = await Booking.findOneAndUpdate({id: id}, {status: 'cancelled'});
+        const response = await Booking.findOneAndUpdate({id: id},{status: 'cancelled'});
         return response
         } catch(err){
             console.log(err)

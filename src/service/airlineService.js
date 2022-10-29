@@ -1,7 +1,8 @@
-
+ 
 const Airline = require("../models/airline");
 const createAirline = async (data) =>{ 
     try {
+       
         const newAirline = {
           name: data.name
 
@@ -19,8 +20,11 @@ const createAirline = async (data) =>{
 
 const getAirline = async (name) =>{
     try{
-        const response = await Airline.findOne({name: name});
-        return response
+        console.log(name)
+        const response = await Airline.findOne({name:name});
+        console.log(response)
+        return response;
+        
         } catch(err){
             console.log(err)
         }
@@ -30,8 +34,10 @@ const getAllAirline = async () =>{
     try{
         const response = await Airline.find();
         return response;
+       
         } catch(err){
-            console.log(err)
+            res.status(500).json(err)
+                   console.log(err)
         }
 }
 
@@ -43,10 +49,20 @@ const destroyAirline = async (name) =>{
             console.log(err)
         }
 }
-
+const updateAirline = async (data) =>{
+    try{
+const response = await Airline.findOneAndUpdate({name:data.original},
+    {name:data.updatename, website:data.updatewebsite}
+    ,{new:true}, (err, info)=>{console.log(info) })
+    return response;
+    } catch(err){
+        console.log(err)
+    }
+}
 module.exports = {
     createAirline,
     getAllAirline,
     getAirline,
-    destroyAirline
+    destroyAirline,
+    updateAirline
 }

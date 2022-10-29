@@ -11,9 +11,14 @@ const ExtractJWT = require('passport-jwt').ExtractJwt;
         },
     async (email,password,done) => {
         try {
+            const exists = await User.findOne({email});
+            if(exists){
+                const err = new Error('User Already exist');
+                return done("User Already exist",false,err)
+            }else{
                 const user =await User.create({email,password});
-                return done(null, user)
-        } catch(err){
+                return done(null, user)}
+             } catch(err){
             console.log(err);
             done(err);
         }
@@ -27,13 +32,15 @@ const ExtractJWT = require('passport-jwt').ExtractJwt;
     },
     async (email,password,done) => {
         try{
-            const user = await User.findOne({email});
+            const user = await User.findOne({email:email});
             if(!user){
-                return done(null,false,{message:"User not found"});
+                return done("User not found",false,{message:"User not found"});
+
             }
             const validate = await user.isValidPassword(password);
             if(!validate){
-                return done(null,false, {message:'Wrong  password'})
+                
+                return done("Wrong password",false, {message:'Wrong  password'})
             }
             return done(null, user, {message:'Logged in Successfully'});
         } catch(err){

@@ -1,9 +1,9 @@
 const mongoose = require("mongoose");
-const connect = () =>{
-    console.log("MongoDb connection requested");
-    mongoose.connect('mongodb://localhost/project');
+const connect=()=>{
+    console.log("Mongodb Requesteds");
+    mongoose.connect("mongodb://localhost/project");
 }
 
-module.exports = {
+module.exports={
     connect
 }
