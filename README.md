@@ -22,7 +22,7 @@ Installation
 
 bash
 
-git clone https://github.com/your_username/flight-booking.git
+git clone https://github.com/ShashankEC37/Flight-Booking.git
 
     Navigate to the project directory:
 
