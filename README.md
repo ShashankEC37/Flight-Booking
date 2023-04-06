@@ -15,6 +15,7 @@ Features
     User authentication: Users can sign up and log in to the application securely.
     Flight search: Users can search for flights based on their travel dates, departure and arrival cities, and number of passengers.
     Flight booking/cancel: Users can book/cancle flights and receive a confirmation email with their itinerary.
+    Review flight
 
 Installation
 
@@ -32,22 +33,16 @@ cd Flight-Booking
 
     Install the dependencies:
 
-bash
-
-npm install
-
-    Create a .env file in the root directory with the following environment variables:
-
-makefile
-
-PORT=3000
-MONGO_URI=<your_mongodb_uri>
-JWT_SECRET=<your_jwt_secret>
-
-    Start the application:
-
-bash
-
+ "bcrypt": "^4.0.1",
+    "body-parser": "^1.19.0",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.6.0",
+    "nodemon": "^2.0.19",
+    "passport": "^0.4.1",
+    "passport-jwt": "^4.0.0",
+    "passport-local": "^1.0.0"
 npm start
 
 The application should now be running on http://localhost:3000.
@@ -64,13 +59,8 @@ To use the Flight Booking Application, follow these steps:
 As an admin, you can log in to the admin panel to manage flights, view bookings, and create new admins.
 Contributing
 
-Contributions are welcome! To contribute to this project, follow these steps:
+Contributions are welcome!
 
-    Fork this repository.
-    Create a new branch for your feature: git checkout -b my-new-feature
-    Make your changes and commit them: git commit -m 'Add some feature'
-    Push your changes to the branch: git push origin my-new-feature
-    Create a pull request.
 
 License
 
