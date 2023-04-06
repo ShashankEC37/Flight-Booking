@@ -28,7 +28,7 @@ git clone https://github.com/ShashankEC37/Flight-Booking.git
 
 bash
 
-cd flight-booking
+cd Flight-Booking
 
     Install the dependencies:
 
@@ -58,8 +58,8 @@ To use the Flight Booking Application, follow these steps:
     Sign up for an account or log in if you already have one.
     Search for flights by selecting your travel dates, departure and arrival cities, and number of passengers.
     Choose a flight and review the details.
-    Enter your payment information and confirm your booking.
-    Receive a confirmation email with your itinerary.
+    Create/Read/Update/Delete flights or airlines if you are a Admin
+ 
 
 As an admin, you can log in to the admin panel to manage flights, view bookings, and create new admins.
 Contributing
