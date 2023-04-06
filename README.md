@@ -32,17 +32,18 @@ bash
 cd Flight-Booking
 
     Install the dependencies:
-
- "bcrypt": "^4.0.1",
+    "bcrypt": "^4.0.1",
     "body-parser": "^1.19.0",
     "dotenv": "^16.0.3",
-    "express": "^4.18.1",
-    "jsonwebtoken": "^8.5.1",
-    "mongoose": "^6.6.0",
-    "nodemon": "^2.0.19",
-    "passport": "^0.4.1",
-    "passport-jwt": "^4.0.0",
-    "passport-local": "^1.0.0"
+     "express": "^4.18.1",
+     "jsonwebtoken": "^8.5.1",
+     "mongoose": "^6.6.0",
+     "nodemon": "^2.0.19",
+     "passport": "^0.4.1",
+     "passport-jwt": "^4.0.0",
+     "passport-local": "^1.0.0"
+
+ 
 npm start
 
 The application should now be running on http://localhost:3000.
